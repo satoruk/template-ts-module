@@ -1,3 +1,3 @@
 export { name, version } from "./package.json";
 
-export * from "./onTimeout";
+export { onTimeout } from "./onTimeout";
