@@ -1,19 +1,19 @@
-import * as pakcage from "./index";
+import * as pkg from "./index";
 
 it("name", () => {
-  expect(pakcage.name).toStrictEqual("template-ts-module");
+  expect(pkg.name).toStrictEqual("template-ts-module");
 });
 
 it("version", () => {
-  expect(pakcage.version).toStrictEqual("1.0.0");
+  expect(pkg.version).toStrictEqual("1.0.0");
 });
 
 it("onTimeout", () => {
-  expect(typeof pakcage.onTimeout).toStrictEqual("function");
+  expect(typeof pkg.onTimeout).toStrictEqual("function");
 });
 
 it("import keys", () => {
-  expect(Object.keys(pakcage).sort()).toStrictEqual([
+  expect(Object.keys(pkg).sort()).toStrictEqual([
     "name",
     "onTimeout",
     "version",
