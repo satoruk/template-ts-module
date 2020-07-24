@@ -1,31 +1,21 @@
 ---
 env:
   es2020: true
+  node: true
+extends:
+  - eslint:recommended
+  - plugin:node/recommended
+  - plugin:prettier/recommended
+  - prettier/@typescript-eslint
 ignorePatterns:
   - "coverage"
   - "node_modules"
   - "**/*.d.ts"
 overrides:
-  - files:
-      - "*.ts"
-    parser: "@typescript-eslint/parser"
-    parserOptions:
-      project:
-        - ./tsconfig.json
-    plugins:
-      - "@typescript-eslint"
-    rules:
-      node/no-unsupported-features/es-syntax: off
-    settings:
-      node:
-        tryExtensions:
-          - ".ts"
-          - ".tsx"
-          - ".js"
-          - ".json"
-    env:
-      node: true
+  - env:
+      es2020: true
       jest/globals: true
+      node: true
     extends:
       - eslint:recommended
       - plugin:node/recommended
@@ -34,3 +24,26 @@ overrides:
       - plugin:jest/recommended
       - plugin:prettier/recommended
       - prettier/@typescript-eslint
+    files:
+      - "**/*{.ts}"
+    parser: "@typescript-eslint/parser"
+    parserOptions:
+      project:
+        - ./tsconfig.json
+    plugins:
+      - "@typescript-eslint"
+    rules:
+      "@typescript-eslint/no-unused-vars":
+        - error
+        - argsIgnorePattern: "^_"
+          varsIgnorePattern: "^_"
+      no-unused-vars: off
+      # NodeからサポートしてないシンタックスはTypeScriptに任せるので無視
+      node/no-unsupported-features/es-syntax: off
+    settings:
+      node:
+        tryExtensions:
+          - ".ts"
+          - ".tsx"
+          - ".js"
+          - ".json"
