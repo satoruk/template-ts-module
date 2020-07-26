@@ -42,13 +42,12 @@ jobs:
         if: ${{ matrix.node-version == '10.x' }}
 #  release:
 #    needs: test
-#    name: Node v${{ matrix.node-version }} on ${{ matrix.os }}
+#    name: release on Node v${{ matrix.node-version }}
 #    strategy:
 #      fail-fast: false
 #      matrix:
 #        node-version: [12.x]
-#        os: [ubuntu-latest]
-#    runs-on: ${{ matrix.os }}
+#    runs-on: ubuntu-latest
 #    if: github.ref == 'refs/heads/master'
 #
 #    steps:
@@ -73,4 +72,3 @@ jobs:
 #        env:
 #          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 #          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          CI: true
