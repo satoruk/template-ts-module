@@ -5,3 +5,9 @@ runner:
       - "%f:%l:%c - %m"
     name: cspell
     level: warning
+runner:
+  sample:
+    cmd: ./bin/foo.sh
+    errorformat:
+      - "%f:%l:%c: %m"
+    level: warning
