@@ -31,24 +31,23 @@ jobs:
       - name: install
         run: yarn install --ignore-scripts
       - name: run tests
-        run: yarn test --color
+        run: yarn test --color --ci
         env:
           CI: true
       - uses: codecov/codecov-action@v1.0.10
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage/clover.xml
+          file: ./coverage/coverage-final.json
           fail_ci_if_error: true
         if: ${{ matrix.node-version == '10.x' }}
 #  release:
 #    needs: test
-#    name: Node v${{ matrix.node-version }} on ${{ matrix.os }}
+#    name: release on Node v${{ matrix.node-version }}
 #    strategy:
 #      fail-fast: false
 #      matrix:
 #        node-version: [12.x]
-#        os: [ubuntu-latest]
-#    runs-on: ${{ matrix.os }}
+#    runs-on: ubuntu-latest
 #    if: github.ref == 'refs/heads/master'
 #
 #    steps:
@@ -73,4 +72,3 @@ jobs:
 #        env:
 #          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 #          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          CI: true

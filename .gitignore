@@ -6,6 +6,7 @@ node_modules
 *.d.ts
 *.js
 *.log
+*.map
 *.tgz
 *.tsbuildinfo
 

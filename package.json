@@ -9,9 +9,9 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --project tsconfig.build.json",
     "clean": "yarn clean:report && yarn clean:build",
-    "clean:build": "del '*.d.ts' '*.js' '!*.config.js'",
+    "clean:build": "del '*.d.ts' '*.js' '*.map' '*.tgz' '!*.config.js'",
     "clean:report": "del coverage '*.log'",
     "commit": "git-cz",
     "lint": "yarn lint:es && yarn lint:spell '**/*.*'",
@@ -25,6 +25,12 @@
     "test:inspect": "npx --node-arg --inspect-brk jest --runInBand --coverage=false"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/commit-analyzer": "8.0.1",
+    "@semantic-release/git": "9.0.0",
+    "@semantic-release/github": "7.0.7",
+    "@semantic-release/npm": "7.0.5",
+    "@semantic-release/release-notes-generator": "9.0.1",
     "@types/jest": "26.0.7",
     "@types/lodash": ">=4.14.158",
     "@types/node": "14.0.25",
@@ -55,5 +61,15 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/git",
+      "@semantic-release/github",
+      "@semantic-release/npm"
+    ]
   }
 }
