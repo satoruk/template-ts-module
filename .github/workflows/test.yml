@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        node-version: [10.x, 12.x, 13.x, 14.x]
+        node-version: [10.x, 12.x, 14.x]
     runs-on: ubuntu-latest
 
     steps:
@@ -34,8 +34,6 @@ jobs:
         run: yarn install --ignore-scripts
       - name: run tests
         run: yarn test --color --ci
-        env:
-          CI: true
       - uses: codecov/codecov-action@v1.0.10
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
