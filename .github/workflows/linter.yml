@@ -19,7 +19,7 @@ jobs:
       - name: Get yarn cache
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+      - uses: actions/cache@v2.1.0
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-node-${{ matrix.node-version }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -38,7 +38,7 @@ jobs:
           echo ::add-path::$HOME/bin
           echo ::add-path::$(go env GOPATH)/bin # for Go projects
         env:
-          REVIEWDOG_VERSION: "0.10.1"
+          REVIEWDOG_VERSION: "0.10.2"
       - name: Run reviewdog
         run: |
           reviewdog -fail-on-error -reporter=github-pr-check -runners=cspell
