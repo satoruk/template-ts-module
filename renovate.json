@@ -1,3 +1,28 @@
 {
-  "extends": ["config:base"]
+  "extends": ["config:base", "group:definitelyTyped"],
+  "masterIssue": true,
+  "packageRules": [
+    {
+      "extends": "packages:jsUnitTest",
+      "groupName": "Test packages",
+      "packageNames": ["@types/jest", "ts-jest"]
+    },
+    {
+      "groupName": "semantic-release packages",
+      "packageNames": [
+        "commitizen",
+        "cz-conventional-changelog",
+        "semantic-release"
+      ],
+      "packagePatterns": ["^@semantic-release/"]
+    },
+    {
+      "extends": "packages:eslint",
+      "groupName": "ESLint packages"
+    },
+    {
+      "extends": "group:definitelyTyped",
+      "groupName": "@types packages"
+    }
+  ]
 }
