@@ -1,6 +1,5 @@
 {
-  "extends": ["config:base", "group:definitelyTyped"],
-  "masterIssue": true,
+  "extends": ["config:base", "packages:eslint", "group:definitelyTyped"],
   "packageRules": [
     {
       "extends": "packages:jsUnitTest",
@@ -15,14 +14,6 @@
         "semantic-release"
       ],
       "packagePatterns": ["^@semantic-release/"]
-    },
-    {
-      "extends": "packages:eslint",
-      "groupName": "ESLint packages"
-    },
-    {
-      "extends": "group:definitelyTyped",
-      "groupName": "@types packages"
     }
   ]
 }
