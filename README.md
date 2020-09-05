@@ -1,5 +1,6 @@
-# message-taker
+# template-ts-module
 
+<!--
 ## Install
 
 ```shell
@@ -11,3 +12,4 @@ $ yarn add my-package
 ```ts
 import { myModule } from "my-package";
 ```
+-->
