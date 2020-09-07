@@ -1,4 +1,4 @@
-name: Lint Code Base
+name: Lint
 
 on:
   push:
@@ -10,7 +10,6 @@ jobs:
   cspell:
     name: cspell
     strategy:
-      fail-fast: true
       matrix:
         node-version: [12.x]
     runs-on: ubuntu-latest
@@ -46,17 +45,15 @@ jobs:
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   lint:
-    name: Lint Code Base
+    name: Lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
     steps:
       - uses: actions/checkout@v2.3.1
-
-      - name: Lint Code Base
+      - name: Lint
         uses: docker://github/super-linter:v3
         env:
           DEFAULT_BRANCH: master
-          VALIDATE_ALL_CODEBASE: false
-          VALIDATE_JAVASCRIPT_ES: true
-          VALIDATE_JAVASCRIPT_STANDARD: false
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          VALIDATE_TSX: true
+          VALIDATE_TYPESCRIPT_ES: true
